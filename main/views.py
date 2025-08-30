@@ -74,3 +74,12 @@ class Detail_View(LoginRequiredMixin,DetailView):
     model = PostModel
     template_name = 'detail_view.html'
     context_object_name = 'post'
+    
+    
+@login_required()
+def delete(request,pk):
+    object = get_object_or_404(PostModel,pk = pk,user=request.user)
+    if request.method == 'POST':
+        object.delete()
+        return redirect('home')
+    return render(request,'delete.html')

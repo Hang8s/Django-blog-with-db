@@ -9,7 +9,7 @@
             <a href="{% url 'detail_view' i.pk %}" class="read-more">read more</a>
             {% if i.user == request.user %}
                 <a href="{% url 'edit' i.id %}">edit</a>
-                <a href="#">delete</a>
+                <a href="{% url 'delete' i.id %}">delete</a>
             {% endif %}
             <hr>
         </div>
