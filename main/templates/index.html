@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    {% for i in posts %}
+        <div class="post">
+            <h3>{{ i.title }}</h3>
+            <p>{{ i.text|truncatechars:30 }}</p>
+            <a href="{% url 'detail_view' i.pk %}" class="read-more">read more</a>
+            {% if i.user == request.user %}
+                <a href="{% url 'edit' i.id %}">edit</a>
+                <a href="#">delete</a>
+            {% endif %}
+            <hr>
+        </div>
+    {% empty %}
+        <p>No posts yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

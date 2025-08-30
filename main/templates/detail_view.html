@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container post-detail">
+    <h2>{{ post.title }}</h2>
+    <p class="meta">By {{ post.user.username }} | {{ post.created_at|date:"F j, Y H:i" }}</p>
+    <p>{{ post.text }}</p>
+
+    <a href="{% url 'home' %}" class="btn">Back to Posts</a>
+</div>
+{% endblock %}
